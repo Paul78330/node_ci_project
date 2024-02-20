@@ -31,13 +31,13 @@ build:
       - ./
 
 # Job 'tests_unitaires' pour exécuter les tests unitaires de l'application
-tests_unitaires:
-  stage: test
-  script:
-    - docker-compose up --build --exit-code-from test
-  artifacts:
-    reports:
-      junit: test-results/resultat_tests.xml
-    paths:
-      - test-results/resultat_tests.xml
-    when: always
+tests_unitaires: # Définit une nouvelle tâche appelée "tests_unitaires"
+  stage: test # Attribue cette tâche à l'étape "test" de la pipeline CI/CD
+  script: 
+    - docker-compose up --build --exit-code-from test # Exécute la commande docker-compose pour construire les services définis dans le fichier docker-compose.yml et exécuter le service "test". L'option --exit-code-from fait en sorte que le code de sortie de cette commande soit le code de sortie du service "test".
+  artifacts: # Définit les artefacts qui seront conservés après l'exécution de cette tâche
+    reports: 
+      junit: test-results/resultat_tests.xml # Spécifie que le rapport de test au format JUnit sera conservé. GitLab utilise ce rapport pour afficher les résultats des tests dans l'interface utilisateur.
+    paths: 
+      - test-results/resultat_tests.xml # Spécifie le chemin du fichier de rapport de test qui sera conservé.
+    when: always # Indique que les artefacts doivent être conservés quel que soit le résultat de la tâche (succès, échec ou annulation).

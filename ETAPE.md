@@ -68,3 +68,26 @@ npm install sinon
 
 * le ficher à tester dois être en [nom_fichier].test.js
 * resoudre les différents dans index.test.js
+
+A savoir :
+
+    -	Comment inspecter tous les processus encours sur notre machine
+
+```
+netstat -tuln [vérifier le ports utilisée sur linux]
+netstat -ano [vérifier les ports utilisée pour windows]
+```
+
+- Pour savoir quel service utilise le port 3000, vous pouvez utiliser la commande `lsof` (List of Open Files) sur un système Unix/Linux ou la commande `netstat` sur Windows.
+
+  ```
+  lsof -i :3000 [linux]
+  netstat -ano | findstr :3000 [windows]
+  ```
+
+    -	Pour arrêter le processus qui utilise le port 3000, vous pouvez utiliser la commande`kill` sur Unix/Linux ou la commande `taskkill` sur Windows.
+
+```
+kill -9 <PID> [linux]
+taskkill /PID <PID> /F [windows]
+```
