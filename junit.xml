@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="14.434">
+  <testsuite name="Albums routes" errors="0" failures="0" skipped="0" timestamp="2024-02-22T14:24:53" time="14.214" tests="1">
+    <testcase classname="Albums routes should create a new album" name="Albums routes should create a new album" time="10.126">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -85,9 +85,53 @@ netstat -ano [vérifier les ports utilisée pour windows]
   netstat -ano | findstr :3000 [windows]
   ```
 
-    -	Pour arrêter le processus qui utilise le port 3000, vous pouvez utiliser la commande`kill` sur Unix/Linux ou la commande `taskkill` sur Windows.
+  - Pour arrêter le processus qui utilise le port 3000, vous pouvez utiliser la commande `kill` sur Unix/Linux ou la commande `taskkill` sur Windows.
 
 ```
 kill -9 <PID> [linux]
 taskkill /PID <PID> /F [windows]
+```
+
+- pour arreter les conteneur docker-compose encours
+  - ```
+    docker-compose down
+    ```
+
+    - pour stopper toutes les images docker encours
+
+```
+docker stop $(docker ps -aq)
+```
+
+- pour supprimer les conteneurs existants
+  - ```
+    docker rm -f $(docker ps -aq)
+    ```
+
+    - pour supprimer tous les conteneur et réseaux inutilisés
+    - 
+
+```
+docker sytem prune -a
+docker network prune
+```
+
+18 Créer un dosier test et y mettre le fihcier de configuration du test [albums_routes.test.js]
+
+19 - ajouter test:integration dans script du package.json, afin d'avoir une commande npm pour le lancement du test
+
+20- Ajouter protfinder : bibliothèque Node permettant d'allouer un port disponible 
+
+```
+npm install portfinder
+```
+
+21- configurer le job adéquat dans le fichier .gitlab-ci.yml
+
+22- tester la configuration localement + tester la configuration depuis docker-compose
+
+23- envoyer mes modifications (changements dans le code) vers mon environnements d'intégration (GitLab)
+
+```
+git push [branche distante] [branche locale]
 ```
