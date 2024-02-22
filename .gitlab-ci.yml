@@ -44,7 +44,7 @@ tests_unitaires: # Définit une nouvelle tâche appelée "tests_unitaires"
 
 #job test d'intégration
 tests_integration:
-  stage: test_integration
+  stage: test
   script:
     - docker-compose up -d app
     - docker-compose run -T app npm run test:integration
