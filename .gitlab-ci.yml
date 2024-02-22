@@ -43,15 +43,14 @@ tests_unitaires: # Définit une nouvelle tâche appelée "tests_unitaires"
     when: always # Indique que les artefacts doivent être conservés quel que soit le résultat de la tâche (succès, échec ou annulation).
 
 #job test d'intégration
-test_integration:
-  stage: tests
+tests_integration:
+  stage: test_integration
   script:
     - docker-compose up -d app
     - docker-compose run -T app npm run test:integration
-    - docker-compose down
   artifacts:
     reports:
-      junit: test-results/resultat_tests_integration.xml
+      junit: integration-test-results/resultat_tests_integration.xml
     paths:
       - integration-test-results/resultat_tests_integration.xml
     when: always
